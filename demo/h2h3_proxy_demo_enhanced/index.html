@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HTTP/2/3 Waterfall Demo (NGINX proxy)</title>
+  <link rel="stylesheet" href="/assets/style1.css">
+  <link rel="stylesheet" href="/assets/style2.css">
+  <link rel="stylesheet" href="/assets/style3.css">
+  <link rel="stylesheet" href="/assets/style4.css">
+  <link rel="stylesheet" href="/assets/style5.css">
+  <link rel="stylesheet" href="/assets/style6.css">
+  <style>
+    body{font-family:Inter,system-ui,Segoe UI,Arial;background:#0b1020;color:#e8e8f0;margin:0}
+    header,footer{padding:16px 20px;color:#aab}
+    main{max-width:1000px;margin:0 auto;padding:12px 20px}
+    .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+    .box{background:#121a33}
+    code{background:#10182e;padding:2px 6px;border-radius:6px}
+    a{color:#7fb0ff}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>HTTP/2/3 — pokaz „waterfall”</h1>
+    <p>Te zasoby (<code>/assets/*</code>) serwuje NGINX, a strona przez reverse proxy na <code>https://localhost</code>. Otwórz DevTools → Network i obserwuj kolumnę „Protocol” oraz równoległe pobieranie.</p>
+  </header>
+  <main>
+    <section class="box">
+      <h2>1) Skrypty modułowe (12 plików)</h2>
+      <p>Każde kliknięcie importuje sekwencyjnie 12 modułów JS (Eager), co w HTTP/2/3 idzie równolegle jednym połączeniem.</p>
+      <button id="load-js">Załaduj moduły</button>
+      <pre id="out-js"></pre>
+    </section>
+
+    <section class="box">
+      <h2>2) Obrazy (20 SVG)</h2>
+      <p>Załaduj galerię i porównaj „waterfall” przy H1.1 vs H2/H3.</p>
+      <button id="load-img">Załaduj obrazy</button>
+      <div class="grid" id="gallery"></div>
+    </section>
+
+    <section class="box">
+      <h2>3) Link do backendu</h2>
+      <p>Jeśli masz uruchomione demo API (np. LivePoll) na porcie 5171, przejdź tu: <a href="/api/health" target="_blank">/api/health</a> (przez proxy).</p>
+    </section>
+  </main>
+  <footer>Tip: włącz „Disable cache” podczas testów i patrz na nagłówki (Alt-Svc, HTTP/2), kolejność i czasy.</footer>
+
+  <script type="module">
+    const out = document.getElementById('out-js')
+    document.getElementById('load-js').onclick = async () => {
+      out.textContent = '...'
+      const t0 = performance.now()
+      const mods = []
+      for (let i=1;i<=12;i++) {
+        const m = await import(`/assets/mod${i}.js`)
+        mods.push(m.default())
+      }
+      const t1 = performance.now()
+      out.textContent = 'Załadowano ' + mods.length + ' modułów w ' + Math.round(t1-t0) + ' ms\n' + mods.join(', ')
+    }
+
+    document.getElementById('load-img').onclick = () => {
+      const g = document.getElementById('gallery')
+      g.innerHTML = ''
+      for (let i=1;i<=20;i++) {
+        const img = new Image()
+        img.src = '/assets/img' + i + '.svg'
+        img.alt = 'img'+i
+        img.loading = 'eager'
+        g.appendChild(img)
+      }
+    }
+  </script>
+</body>
+</html>

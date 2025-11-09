@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Live Poll — „Ulubiony framework?”</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    :root { --bg:#0b1020; --fg:#e8e8f0; --mut:#aab; --card:#121a33; }
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,Segoe UI,Arial;background:var(--bg);color:var(--fg)}
+    header{padding:24px 20px; display:flex; justify-content:space-between; align-items:center}
+    .brand{font-weight:700; letter-spacing:.3px}
+    main{max-width:980px;margin:0 auto;padding:0 16px 48px}
+    .card{background:var(--card); border:1px solid #223; border-radius:16px; padding:18px 18px}
+    .grid{display:grid; gap:16px; grid-template-columns:1.1fr .9fr}
+    @media (max-width: 920px){ .grid{grid-template-columns:1fr} }
+    button{background:#4f7cff;color:white;border:none;padding:10px 14px;border-radius:10px;cursor:pointer}
+    button:disabled{opacity:.6;cursor:not-allowed}
+    ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+    li{display:flex; align-items:center; justify-content:space-between; background:#0f1730; padding:10px 12px; border-radius:10px; border:1px solid #1b2745}
+    small{color:var(--mut)}
+    footer{color:var(--mut); text-align:center; padding:24px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">Live Poll • HTTP Demo</div>
+    <small id="status">API: …</small>
+  </header>
+  <main class="grid">
+    <section class="card">
+      <h2>Głosowanie: „Ulubiony framework?”</h2>
+      <ul id="options"></ul>
+      <p><small>Kliknij „Głosuj”, potem obserwuj wykres obok. Pokazuj w DevTools → Network żądania i nagłówki.</small></p>
+    </section>
+    <section class="card">
+      <h2>Wyniki na żywo</h2>
+      <canvas id="chart" height="220"></canvas>
+      <p><small>Endpoint: <code>/api/results</code> (no-store). Przeładowuje się co 2s.</small></p>
+    </section>
+  </main>
+  <footer>HTTP/REST • Cache-Control • Statusy • JSON — demo do wykładu</footer>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
