@@ -1,0 +1,26 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run API",
+      "type": "process",
+      "command": "dotnet",
+      "args": [
+        "run",
+        "--project",
+        "src/Api/Api.csproj"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "Build",
+      "type": "process",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "AdventureWorks_InvoiceApi_AW_Fixed.sln"
+      ],
+      "problemMatcher": "$msCompile"
+    }
+  ]
+}
