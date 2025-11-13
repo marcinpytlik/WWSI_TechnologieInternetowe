@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SqlDemoApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+092ce23616400118f4da3d552cd5195aee6f75ae")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d15a3921f9383d2efbdfb8f4501b63ae232946d8")]
 [assembly: System.Reflection.AssemblyProductAttribute("SqlDemoApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SqlDemoApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

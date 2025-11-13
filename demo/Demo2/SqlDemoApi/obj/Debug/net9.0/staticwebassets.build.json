@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "zR6CVIEajt4OsBR7FU3Zim0/wdhJvPlSu1rrej9EeKM=",
+  "Source": "SqlDemoApi",
+  "BasePath": "_content/SqlDemoApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

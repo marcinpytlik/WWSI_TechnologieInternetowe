@@ -18,7 +18,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<IDbConnectionFactory>(_ =>
-    new SqlConnectionFactory(builder.Configuration.GetConnectionString("Sql")!));
+    new SqlConnectionFactory(builder.Configuration.GetConnectionString("AdventureWorks2022")!));
 
 var app = builder.Build();
 
@@ -37,11 +37,11 @@ app.MapGet("/telemetry/snapshot", async ([FromServices] IDbConnectionFactory fac
     await using var conn = await factory.OpenAsync();
 
     // 1) Aktywne sesje
-    var activeSessions = (int)await ScalarAsync(conn,
+    var activeSessions = await ScalarAsync<int>(conn,
         @"SELECT COUNT(*) FROM sys.dm_exec_sessions WHERE is_user_process = 1;");
 
     // 2) Aktywne żądania
-    var activeRequests = (int)await ScalarAsync(conn,
+    var activeRequests = await ScalarAsync<int>(conn,
         @"SELECT COUNT(*) FROM sys.dm_exec_requests WHERE session_id > 50;");
 
     // 3) Top query wg CPU
@@ -62,7 +62,7 @@ ORDER BY qs.total_worker_time DESC;");
     int queryStoreQueries;
     try
     {
-        queryStoreQueries = (int)await ScalarAsync(conn, @"
+        queryStoreQueries = await ScalarAsync<int>(conn, @"
 IF EXISTS (SELECT 1 FROM sys.databases WHERE name = DB_NAME() AND is_query_store_on = 1)
     SELECT COUNT(*) FROM sys.query_store_query;
 ELSE
@@ -85,8 +85,7 @@ ELSE
 
     return Results.Ok(snapshot);
 })
-.WithName("GetTelemetrySnapshot")
-.WithOpenApi();
+.WithName("GetTelemetrySnapshot");
 
 // --------------------------------------------------------
 // Option 2: SQL Query Assistant (rule-based demo)
@@ -108,7 +107,7 @@ app.MapPost("/assistant/ask", async (
             Question = request.Question,
             Sql = "-- Nie znam odpowiedzi na to pytanie.\n" +
                   "-- Spróbuj np.: \"Pokaż klientów z Polski\" albo \"Top 10 produktów po cenie\".",
-            Rows = Array.Empty<Dictionary<string, object?>>().ToList()
+            Rows = new List<Dictionary<string, object?>>()
         });
     }
 
@@ -142,26 +141,27 @@ app.MapPost("/assistant/ask", async (
 
     return Results.Ok(response);
 })
-.WithName("AskSqlAssistant")
-.WithOpenApi();
+.WithName("AskSqlAssistant");
 
 app.Run();
 
 
 // ===================== Helpers (top-level methods) =====================
 
-static async Task<object> ScalarAsync(SqlConnection conn, string sql)
+static async Task<T> ScalarAsync<T>(SqlConnection conn, string sql)
 {
     await using var cmd = conn.CreateCommand();
     cmd.CommandText = sql;
     cmd.CommandType = CommandType.Text;
-    return await cmd.ExecuteScalarAsync() ?? 0;
-}
 
-static async Task<T> ScalarAsync<T>(SqlConnection conn, string sql)
-{
-    var obj = await ScalarAsync(conn, sql);
-    if (obj is T t) return t;
+    var obj = await cmd.ExecuteScalarAsync();
+
+    if (obj == null || obj is DBNull)
+        return default!;
+
+    if (obj is T t)
+        return t;
+
     return (T)Convert.ChangeType(obj, typeof(T));
 }
 
