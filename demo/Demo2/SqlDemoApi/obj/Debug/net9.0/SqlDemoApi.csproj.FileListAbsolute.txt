@@ -1,0 +1,8 @@
+C:\Users\blad\Documents\GitHub\WWSI_TechnologieInternetowe\demo\Demo2\SqlDemoApi\obj\Debug\net9.0\SqlDemoApi.csproj.AssemblyReference.cache
+C:\Users\blad\Documents\GitHub\WWSI_TechnologieInternetowe\demo\Demo2\SqlDemoApi\obj\Debug\net9.0\SqlDemoApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\blad\Documents\GitHub\WWSI_TechnologieInternetowe\demo\Demo2\SqlDemoApi\obj\Debug\net9.0\SqlDemoApi.AssemblyInfoInputs.cache
+C:\Users\blad\Documents\GitHub\WWSI_TechnologieInternetowe\demo\Demo2\SqlDemoApi\obj\Debug\net9.0\SqlDemoApi.AssemblyInfo.cs
+C:\Users\blad\Documents\GitHub\WWSI_TechnologieInternetowe\demo\Demo2\SqlDemoApi\obj\Debug\net9.0\SqlDemoApi.csproj.CoreCompileInputs.cache
+C:\Users\blad\Documents\GitHub\WWSI_TechnologieInternetowe\demo\Demo2\SqlDemoApi\obj\Debug\net9.0\SqlDemoApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\blad\Documents\GitHub\WWSI_TechnologieInternetowe\demo\Demo2\SqlDemoApi\obj\Debug\net9.0\SqlDemoApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\blad\Documents\GitHub\WWSI_TechnologieInternetowe\demo\Demo2\SqlDemoApi\obj\Debug\net9.0\SqlDemoApi.sourcelink.json
