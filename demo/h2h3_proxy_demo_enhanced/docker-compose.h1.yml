@@ -1,0 +1,12 @@
+services:
+  nginx-h1:
+    image: nginx:1.27-alpine
+    container_name: nginx-h1-demo
+    ports:
+      - "8080:8080/tcp"
+      - "8443:8443/tcp"
+    volumes:
+      - ./nginx_h1.conf:/etc/nginx/nginx.conf:ro
+      - ./certs:/etc/nginx/certs:ro
+      - ./:/usr/share/nginx/html:ro
+    restart: unless-stopped
