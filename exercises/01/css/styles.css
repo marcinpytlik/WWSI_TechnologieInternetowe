@@ -1,0 +1,100 @@
+/* === Ćwiczenia – CSS podstawy ===
+   Pokaż użycie selektorów: element, .class, #id, a także marginesy/padding, kolory i tło strony.
+*/
+
+/* Selektor elementu: stosuje się do wszystkich elementów tego typu */
+body {
+  font-family: system-ui, Segoe UI, Arial, sans-serif;
+  color: #222;
+  background: linear-gradient(180deg, #f7f9fc 0%, #eef2f7 100%); /* tło strony */
+  margin: 0; /* usuń domyślne marginesy */
+}
+
+/* Selektor elementu */
+h1, h2 {
+  color: #1e88e5; /* zmiana koloru nagłówków */
+  margin: 0 0 .6rem 0;
+}
+
+/* Selektor #id – stylujemy konkretny kontener */
+#main-container {
+  max-width: 900px;
+  margin: 1.5rem auto; /* marginesy zewnętrzne */
+  padding: 0 1rem;     /* padding wewnętrzny */
+}
+
+/* Pasek nagłówka u góry – #id + elementy potomne */
+#topbar {
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 1rem;
+}
+#topbar p {
+  margin: .3rem 0 0 0;
+  color: #556;
+}
+
+/* Selektor .class – powtarzalne komponenty */
+.card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1rem 1.25rem; /* padding – odstęp wewnątrz */
+  margin: 1rem 0;        /* margin – odstęp na zewnątrz */
+  box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+}
+
+.field { 
+  display: flex; 
+  flex-direction: column; 
+  gap: .35rem; 
+  margin: .8rem 0; 
+}
+.field.checkbox { 
+  flex-direction: row; 
+  align-items: center; 
+  gap: .5rem; 
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+  padding: .6rem .7rem;
+  border: 1px solid #d0d7e2;
+  border-radius: 8px;
+  outline: none;
+}
+input:focus {
+  border-color: #1e88e5;
+  box-shadow: 0 0 0 3px rgba(30,136,229,.15);
+}
+
+/* Przyciski – .class + wariant .primary */
+.btn {
+  appearance: none;
+  border: none;
+  border-radius: 8px;
+  padding: .6rem 1rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+.btn.primary {
+  background: #1e88e5;
+  color: white;
+}
+.btn.primary:hover { filter: brightness(0.95); }
+
+/* Lista notatek – selektor elementu + .class */
+ul.notes {
+  padding-left: 1.2rem;
+  color: #334;
+}
+ul.notes li { margin: .4rem 0; }
+
+/* Stopka – .class */
+.site-footer {
+  margin-top: 2rem;
+  border-top: 1px solid #e5e7eb;
+  background: #fff;
+  padding: 1rem;
+  text-align: center;
+  color: #556;
+}

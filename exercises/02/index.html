@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ćwiczenia – CSS layouty (Flexbox + RWD)</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>Demo układu: Flexbox</h1>
+  </header>
+
+  <!-- Główny kontener z układem: sidebar + main -->
+  <div class="layout">
+    <aside class="sidebar" aria-label="Menu boczne">
+      <nav class="menu">
+        <h2>Menu</h2>
+        <ul>
+          <li><a href="#">Strona główna</a></li>
+          <li><a href="#">Artykuły</a></li>
+          <li><a href="#">Kontakt</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <article>
+        <h2>Główna treść</h2>
+        <p>
+          Ten układ wykorzystuje <strong>Flexbox</strong> do ustawienia menu bocznego i treści obok siebie.
+          Poniżej znajdziesz sekcję responsywną – na wąskich ekranach menu spada pod treść (media queries).
+        </p>
+
+        <section class="cards">
+          <div class="card">
+            <h3>Karta 1</h3>
+            <p>Przykładowa karta treści. Dodaj tu swoje komponenty.</p>
+          </div>
+          <div class="card">
+            <h3>Karta 2</h3>
+            <p>Flexbox ułatwia budowę layoutów bez floatów.</p>
+          </div>
+          <div class="card">
+            <h3>Karta 3</h3>
+            <p>W media queries testujemy szerokość i zmieniamy układ.</p>
+          </div>
+        </section>
+
+        <p>
+          (Opcjonalnie) sprawdź też plik <a href="bootstrap.html">bootstrap.html</a>,
+          gdzie wykorzystujemy <em>Bootstrap Grid</em> do formularza.
+        </p>
+      </article>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <small>&copy; 2025 CSS – layouty i frameworki</small>
+  </footer>
+</body>
+</html>
