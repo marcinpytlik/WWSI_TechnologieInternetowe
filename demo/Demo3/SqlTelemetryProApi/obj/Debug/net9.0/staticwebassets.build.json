@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "dwOKrGFV4e0Yj2c4SmFMyPf4w1sXtRFPwVMYOev7UFM=",
+  "Source": "SqlTelemetryProApi",
+  "BasePath": "_content/SqlTelemetryProApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
