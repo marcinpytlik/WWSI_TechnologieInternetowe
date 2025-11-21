@@ -1,0 +1,90 @@
+/* === Ćwiczenia – CSS layouty i frameworki ===
+   Układ: header + (sidebar | content) + footer
+   Desktop: sidebar po lewej, content po prawej (Flexbox)
+   Mobile (<= 768px): content nad, sidebar pod treścią
+*/
+:root {
+  --bg:#f7f7f9; --card:#fff; --ink:#222; --muted:#667; --line:#e5e7eb; --pri:#1e88e5;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: system-ui, Segoe UI, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header & footer */
+.site-header, .site-footer {
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+  padding: 1rem 1.25rem;
+}
+.site-footer { border-top: 1px solid var(--line); border-bottom: none; margin-top: auto; }
+h1, h2, h3 { margin: .2rem 0 1rem; color: var(--pri); }
+
+/* Layout wrapper */
+.layout {
+  display: flex;              /* FLEXBOX: ustawiamy obok siebie */
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Sidebar */
+.sidebar {
+  flex: 0 0 260px;            /* szerokość bocznego panelu */
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1rem;
+  height: fit-content;
+}
+.menu ul { list-style: none; padding-left: .4rem; }
+.menu li { margin: .4rem 0; }
+.menu a { color: var(--pri); text-decoration: none; }
+.menu a:hover { text-decoration: underline; }
+
+/* Content */
+.content {
+  flex: 1 1 auto;             /* wypełnia resztę miejsca */
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.card {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1rem;
+  background: #fff;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+}
+
+/* MEDIA QUERIES: układ mobilny */
+@media (max-width: 768px) {
+  .layout {
+    flex-direction: column;    /* content i sidebar w kolumnie */
+  }
+  .sidebar {
+    order: 2;                  /* menu POD treścią */
+  }
+  .content {
+    order: 1;                  /* treść NAD menu */
+  }
+  .cards {
+    grid-template-columns: 1fr; /* karty jedna pod drugą */
+  }
+}

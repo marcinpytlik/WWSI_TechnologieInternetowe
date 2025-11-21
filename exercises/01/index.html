@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ćwiczenia – CSS podstawy</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header id="topbar">
+    <h1 class="title">Rejestracja użytkownika</h1>
+    <p>To jest przykładowa strona do ćwiczeń z CSS.</p>
+  </header>
+
+  <main id="main-container">
+    <section class="card">
+      <h2>Dane użytkownika</h2>
+      <form action="#" method="post">
+        <div class="field">
+          <label for="name">Imię</label>
+          <input type="text" id="name" name="name" placeholder="Ala">
+        </div>
+        <div class="field">
+          <label for="email">E‑mail</label>
+          <input type="email" id="email" name="email" placeholder="ala@example.com">
+        </div>
+        <div class="field">
+          <label for="password">Hasło</label>
+          <input type="password" id="password" name="password" placeholder="min. 6 znaków">
+        </div>
+        <div class="field checkbox">
+          <input type="checkbox" id="consent" name="consent">
+          <label for="consent">Akceptuję regulamin</label>
+        </div>
+        <button class="btn primary" type="submit">Wyślij</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Notatki do zadań</h2>
+      <ul class="notes">
+        <li>Użyj selektora <code>element</code> (np. <code>body</code>, <code>h1</code>, <code>p</code>).</li>
+        <li>Użyj selektora <code>.class</code> (np. <code>.card</code>, <code>.btn</code>).</li>
+        <li>Użyj selektora <code>#id</code> (np. <code>#main-container</code>).</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>&copy; 2025 CSS – podstawy selektorów</small>
+  </footer>
+
+</body>
+</html>
