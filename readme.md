@@ -1,34 +1,139 @@
-# 📦 Repozytorium – Technologie Internetowe (40h)
+# Technologie Internetowe — ASP.NET Core + Docker (40h)
 
-Kompletny zestaw materiałów: sylabus, ściągi, ćwiczenia, mini-laby, skrypty T-SQL, zadania projektowe oraz dwa przykładowe projekty Node.js (demo i pełniejszy szkielet API).
+Repozytorium materiałów laboratoryjnych do kursu **Technologie Internetowe**.
 
-## Struktura
-- `docs/` – sylabus i dokumenty kursowe
-- `setup/` – instrukcje instalacji + checklisty
-- `cheat-sheets/` – ściągi: HTML5, atrybuty, CSS3, JS (ES6+)
-- `exercises/` – 10 plików ćwiczeń do bloków 4h
-- `labs/mini/` – mini-zadania do HTML5, CSS3, JS
-- `db/` – skrypty T-SQL (schema, indeksy, widoki/TVF, procedury, seed)
-- `tasks/` – 6 zadań projektowych (MD) dla Node.js + SQL Server
-- `demo/` – mały projekt Express + SQL Server + `init_demo_db.sql`
-- `api/` – pełniejszy szkielet API (Express + mssql + JWT + import + raporty)
+Nowa edycja kursu jest oparta o architekturę Docker-first i jeden spójny stos technologiczny:
 
-## Szybki start API
-1. Uruchom skrypty z `db/` (kolejno 01..05).
-2. Przejdź do `api/`, skopiuj `.env.example` → `.env` i uzupełnij hasło.
-3. Zainstaluj paczki i odpal:
-   ```bash
-   npm install
-   npm start
-   ```
+- HTML5
+- CSS3
+- JavaScript
+- HTTP / HTTPS
+- ASP.NET Core Web API
+- Entity Framework Core
+- SQL Server
+- Docker
+- Docker Compose
+- Nginx
+- Swagger / OpenAPI
+- JWT
 
-## Szybki start DEMO
-1. Wykonaj `demo/init_demo_db.sql` w SQL Server Express.
-2. W `demo/`:
-   ```bash
-   npm install
-   npm start
-   ```
-3. Odwiedź `http://localhost:3000/users`.
+## Cel kursu
 
-Miłej pracy! 🚀
+Celem kursu nie jest nauka samego ASP.NET Core.
+
+ASP.NET Core służy jako platforma do praktycznego pokazania:
+- HTTP,
+- REST API,
+- komunikacji klient–serwer,
+- pracy z bazą danych,
+- bezpieczeństwa aplikacji webowych,
+- reverse proxy,
+- konteneryzacji,
+- wdrażania aplikacji internetowych.
+
+## Architektura docelowa
+
+```text
+Browser / JavaScript
+        |
+        | HTTP / HTTPS
+        v
+      Nginx
+        |
+        v
+ASP.NET Core Web API
+        |
+        v
+Entity Framework Core
+        |
+        v
+SQL Server
+```
+
+Wszystkie usługi serwerowe uruchamiane są w kontenerach.
+
+## Organizacja kursu
+
+Kurs ma 40 godzin i składa się z 10 bloków po 4 godziny:
+
+1. HTTP, DNS i model klient–serwer
+2. HTML, CSS i JavaScript
+3. ASP.NET Core Web API
+4. REST i projektowanie API
+5. EF Core + SQL Server w Dockerze
+6. Frontend komunikujący się z własnym API
+7. Authentication / Authorization / JWT
+8. Docker i Docker Compose
+9. Nginx, HTTPS, security i performance
+10. Projekt końcowy
+
+Szczegółowy plan:
+- [docs/00-Plan_kursu.md](docs/00-Plan_kursu.md)
+
+## Wymagane narzędzia
+
+- Docker Desktop
+- .NET SDK
+- Visual Studio Code lub Visual Studio
+- Git
+- przeglądarka z DevTools
+
+Opcjonalnie:
+- REST Client
+- Postman
+- curl
+
+Nie wymagamy lokalnej instalacji SQL Servera.
+
+## Docelowa struktura repo
+
+```text
+docs/
+labs/
+  01-http/
+  02-html-css-js/
+  03-aspnetcore-api/
+  04-rest-api/
+  05-efcore-sqlserver/
+  06-frontend-api/
+  07-auth-jwt/
+  08-docker-compose/
+  09-nginx-security-performance/
+  10-final-project/
+src/
+  frontend/
+  api/
+docker/
+  nginx/
+  sqlserver/
+docker-compose.yml
+```
+
+Repozytorium jest obecnie przebudowywane z poprzedniej wersji opartej o Node.js + Express do nowej wersji opartej o ASP.NET Core.
+
+## Zasada kursu
+
+Jedna aplikacja rozwija się przez cały kurs.
+
+Zaczynamy od protokołu HTTP i prostego frontendu, następnie budujemy API, dokładamy bazę danych, authentication, konteneryzację i reverse proxy.
+
+Na końcu student uruchamia kompletny system poleceniem:
+
+```bash
+docker compose up --build
+```
+
+## Standard laboratoriów
+
+Każdy lab powinien zawierać:
+
+1. Cel
+2. Architektura
+3. Wymagania
+4. Przygotowanie
+5. Kroki krok po kroku
+6. Weryfikacja
+7. Zadania dodatkowe
+8. Cleanup
+
+Dzięki temu każdy moduł może być wykonany samodzielnie również po zajęciach.
