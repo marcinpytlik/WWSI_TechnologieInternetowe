@@ -1,15 +1,24 @@
 namespace CourseApi.Auth;
 
-public sealed class UserService : IUserService
+public sealed class UserService(IConfiguration configuration) : IUserService
 {
-    private static readonly UserAccount[] Users =
-    [
-        new("student", "Student123!", "Student"),
-        new("admin", "Admin123!", "Admin")
-    ];
+    public UserAccount? Validate(string username, string password)
+    {
+        var studentPassword = configuration["DemoUsers:StudentPassword"];
+        var adminPassword = configuration["DemoUsers:AdminPassword"];
 
-    public UserAccount? Validate(string username, string password) =>
-        Users.FirstOrDefault(x =>
-            string.Equals(x.Username, username, StringComparison.OrdinalIgnoreCase)
-            && x.Password == password);
+        if (string.Equals(username, "student", StringComparison.OrdinalIgnoreCase)
+            && password == studentPassword)
+        {
+            return new UserAccount("student", password, "Student");
+        }
+
+        if (string.Equals(username, "admin", StringComparison.OrdinalIgnoreCase)
+            && password == adminPassword)
+        {
+            return new UserAccount("admin", password, "Admin");
+        }
+
+        return null;
+    }
 }
