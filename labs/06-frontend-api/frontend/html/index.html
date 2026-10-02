@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Technologie Internetowe — Lab 06</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>Lab 06 — Frontend + API</h1>
+      <p>HTML / CSS / JavaScript + ASP.NET Core + EF Core + SQL Server</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Dodaj temat</h2>
+      <form id="topic-form">
+        <input id="topic-id" type="hidden">
+        <label for="topic-name">Nazwa</label>
+        <input id="topic-name" type="text" minlength="3" maxlength="100" required>
+        <div class="actions">
+          <button id="submit-button" type="submit">Dodaj</button>
+          <button id="cancel-button" type="button" hidden>Anuluj</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
+      <div class="toolbar">
+        <h2>Tematy</h2>
+        <button id="refresh-button" type="button">Odśwież</button>
+      </div>
+
+      <p id="status" aria-live="polite"></p>
+      <ul id="topics-list"></ul>
+    </section>
+  </main>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
