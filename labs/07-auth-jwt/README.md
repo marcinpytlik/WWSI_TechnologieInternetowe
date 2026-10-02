@@ -40,7 +40,7 @@ Protected API
 
 W tym labie nie używamy jeszcze ASP.NET Core Identity.
 
-Użytkownicy są zdefiniowani w prostym serwisie in-memory, żeby skupić się na:
+Użytkownicy są obsługiwani przez prosty serwis demonstracyjny, a hasła są wczytywane z lokalnej konfiguracji, żeby skupić się na:
 - JWT,
 - claims,
 - roles,
@@ -49,12 +49,7 @@ Użytkownicy są zdefiniowani w prostym serwisie in-memory, żeby skupić się n
 
 ## Konta testowe
 
-```text
-student / Student123!
-admin   / Admin123!
-```
-
-To wyłącznie dane laboratoryjne.
+Używamy dwóch nazw użytkowników: `student` i `admin`. Hasła ustaw lokalnie w pliku `.env` przez `STUDENT_PASSWORD` i `ADMIN_PASSWORD`; nie są commitowane do repo.
 
 ## Uruchomienie
 
@@ -86,7 +81,7 @@ Content-Type: application/json
 
 {
   "username": "student",
-  "password": "Student123!"
+  "password": "HASLO_USTAWIONE_W_.ENV"
 }
 ```
 
