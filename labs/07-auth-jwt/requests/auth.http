@@ -1,0 +1,42 @@
+@baseUrl = http://localhost:8081
+
+### Login - student
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "student",
+  "password": "USE_VALUE_FROM_YOUR_LAB_CONFIG"
+}
+
+### Login - admin
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "USE_VALUE_FROM_YOUR_LAB_CONFIG"
+}
+
+### Profil bez tokenu -> 401
+GET {{baseUrl}}/api/profile
+
+### Profil z tokenem
+GET {{baseUrl}}/api/profile
+Authorization: Bearer PASTE_TOKEN_HERE
+
+### Lista tematów - publiczna
+GET {{baseUrl}}/api/topics
+
+### Dodanie - wymaga uwierzytelnienia
+POST {{baseUrl}}/api/topics
+Authorization: Bearer PASTE_TOKEN_HERE
+Content-Type: application/json
+
+{
+  "name": "Authorization"
+}
+
+### Usunięcie - wymaga Admin
+DELETE {{baseUrl}}/api/topics/1
+Authorization: Bearer PASTE_TOKEN_HERE
