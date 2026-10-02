@@ -24,3 +24,5 @@ services:
       Jwt__SigningKey: "${JWT_SIGNING_KEY}"
       Jwt__Issuer: "CourseApi"
       Jwt__Audience: "CourseFrontend"
+      DemoUsers__StudentPassword: "${STUDENT_PASSWORD}"
+      DemoUsers__AdminPassword: "${ADMIN_PASSWORD}"
