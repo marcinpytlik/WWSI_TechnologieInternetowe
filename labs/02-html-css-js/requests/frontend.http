@@ -1,0 +1,15 @@
+### Strona główna
+GET http://localhost:8080/
+
+### JavaScript
+GET http://localhost:8080/app.js
+
+### CSS
+GET http://localhost:8080/styles.css
+
+### JSON wykorzystywany przez fetch()
+GET http://localhost:8080/api/course.json
+Accept: application/json
+
+### Błąd 404
+GET http://localhost:8080/api/not-found.json
