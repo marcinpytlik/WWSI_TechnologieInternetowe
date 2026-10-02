@@ -1,0 +1,17 @@
+{
+  "name": "Technologie Internetowe",
+  "hours": 40,
+  "blocks": 10,
+  "topics": [
+    "HTTP i DNS",
+    "HTML i CSS",
+    "JavaScript",
+    "ASP.NET Core Web API",
+    "REST",
+    "Entity Framework Core",
+    "SQL Server",
+    "JWT",
+    "Docker Compose",
+    "Nginx i HTTPS"
+  ]
+}
