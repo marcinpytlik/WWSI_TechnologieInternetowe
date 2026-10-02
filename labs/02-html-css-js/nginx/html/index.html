@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Technologie Internetowe — Lab 02</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>Technologie Internetowe — Lab 02</h1>
+      <p>HTML, CSS, JavaScript i fetch()</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Interakcja z DOM</h2>
+
+      <form id="greeting-form">
+        <label for="name">Imię</label>
+        <input id="name" name="name" type="text" autocomplete="off" required>
+        <button type="submit">Przywitaj</button>
+      </form>
+
+      <p id="greeting" class="result"></p>
+    </section>
+
+    <section class="card">
+      <h2>Dane z HTTP</h2>
+      <p>
+        Dane zostaną pobrane z pliku JSON przez <code>fetch()</code>.
+      </p>
+
+      <button id="load-course" type="button">Pobierz informacje o kursie</button>
+
+      <div id="course-status" class="result" aria-live="polite"></div>
+      <ul id="topics"></ul>
+    </section>
+  </main>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
