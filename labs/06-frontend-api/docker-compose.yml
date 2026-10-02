@@ -1,0 +1,52 @@
+services:
+  frontend:
+    image: nginx:alpine
+    container_name: ti-lab06-frontend
+    ports:
+      - "8080:80"
+    volumes:
+      - ./frontend/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./frontend/html:/usr/share/nginx/html:ro
+    depends_on:
+      - api
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: ti-lab06-api
+    env_file:
+      - .env
+    ports:
+      - "8081:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__CourseDb: "Server=sqlserver,1433;Database=CourseDb;User Id=sa;Password=${MSSQL_SA_PASSWORD};TrustServerCertificate=True;Encrypt=True"
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: ti-lab06-sql
+    env_file:
+      - .env
+    environment:
+      ACCEPT_EULA: "Y"
+    ports:
+      - "14334:1433"
+    volumes:
+      - lab06-sql-data:/var/opt/mssql
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P \"$$MSSQL_SA_PASSWORD\" -C -Q \"SELECT 1\" || exit 1"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 15
+      start_period: 20s
+
+volumes:
+  lab06-sql-data:
