@@ -1,0 +1,22 @@
+### GET strony głównej
+GET http://localhost:8080/
+
+### HEAD
+HEAD http://localhost:8080/
+
+### JSON
+GET http://localhost:8080/data.json
+Accept: application/json
+
+### Własny nagłówek
+GET http://localhost:8080/
+X-Lab: TI-01
+
+### 404
+GET http://localhost:8080/not-found
+
+### Query string
+GET http://localhost:8080/?name=Jan&lang=pl
+
+### Redirect
+GET http://localhost:8080/old

@@ -1,0 +1,72 @@
+@baseUrl = http://localhost:8080
+
+### Wszystkie tematy
+GET {{baseUrl}}/api/topics
+Accept: application/json
+
+### Filtrowanie
+GET {{baseUrl}}/api/topics?search=api
+Accept: application/json
+
+### Sortowanie rosnąco
+GET {{baseUrl}}/api/topics?sort=name
+Accept: application/json
+
+### Sortowanie malejąco
+GET {{baseUrl}}/api/topics?sort=-name
+Accept: application/json
+
+### Paginacja
+GET {{baseUrl}}/api/topics?page=1&pageSize=2
+Accept: application/json
+
+### Druga strona
+GET {{baseUrl}}/api/topics?page=2&pageSize=2
+Accept: application/json
+
+### Błędna paginacja
+GET {{baseUrl}}/api/topics?page=0&pageSize=5000
+Accept: application/json
+
+### Jeden temat
+GET {{baseUrl}}/api/topics/1
+Accept: application/json
+
+### Brak tematu
+GET {{baseUrl}}/api/topics/999
+Accept: application/json
+
+### Dodaj temat
+POST {{baseUrl}}/api/topics
+Content-Type: application/json
+
+{
+  "name": "Entity Framework Core"
+}
+
+### Błąd walidacji
+POST {{baseUrl}}/api/topics
+Content-Type: application/json
+
+{
+  "name": "A"
+}
+
+### Konflikt
+POST {{baseUrl}}/api/topics
+Content-Type: application/json
+
+{
+  "name": "HTTP"
+}
+
+### Aktualizacja
+PUT {{baseUrl}}/api/topics/1
+Content-Type: application/json
+
+{
+  "name": "Web API Design"
+}
+
+### Usuń
+DELETE {{baseUrl}}/api/topics/1

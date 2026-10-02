@@ -1,0 +1,39 @@
+@baseUrl = http://localhost:8080
+
+### Swagger
+GET {{baseUrl}}/swagger/index.html
+
+### Wszystkie tematy
+GET {{baseUrl}}/api/topics
+Accept: application/json
+
+### Jeden temat
+GET {{baseUrl}}/api/topics/1
+Accept: application/json
+
+### Brak tematu
+GET {{baseUrl}}/api/topics/999
+Accept: application/json
+
+### Dodaj temat
+POST {{baseUrl}}/api/topics
+Content-Type: application/json
+
+{
+  "name": "Docker"
+}
+
+### Walidacja - pusta nazwa
+POST {{baseUrl}}/api/topics
+Content-Type: application/json
+
+{
+  "name": ""
+}
+
+### Informacje z konfiguracji
+GET {{baseUrl}}/api/info
+Accept: application/json
+
+### Health
+GET {{baseUrl}}/health

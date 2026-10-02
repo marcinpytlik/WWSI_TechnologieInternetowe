@@ -1,0 +1,10 @@
+@httpsBase = https://localhost:8443
+
+### Health
+GET {{httpsBase}}/health
+
+### Topics
+GET {{httpsBase}}/api/topics
+
+### Forwarded headers
+GET {{httpsBase}}/api/request-info

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lab 07 — JWT</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="container">
+    <section class="card">
+      <h1>Lab 07 — Authentication, JWT i Authorization</h1>
+
+      <form id="login-form">
+        <label for="username">Użytkownik</label>
+        <input id="username" required>
+
+        <label for="password">Hasło</label>
+        <input id="password" type="password" required>
+
+        <button type="submit">Zaloguj</button>
+      </form>
+
+      <p id="auth-status">Niezalogowany</p>
+      <button id="logout" type="button" hidden>Wyloguj</button>
+    </section>
+
+    <section class="card">
+      <h2>Profil</h2>
+      <button id="profile" type="button">Pobierz profil</button>
+      <pre id="profile-result"></pre>
+    </section>
+
+    <section class="card">
+      <h2>Tematy</h2>
+      <button id="load-topics" type="button">Pobierz listę</button>
+      <ul id="topics"></ul>
+    </section>
+  </main>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

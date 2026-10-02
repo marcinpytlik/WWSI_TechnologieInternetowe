@@ -1,0 +1,9 @@
+services:
+  web:
+    image: nginx:alpine
+    container_name: ti-lab01-web
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx/html:/usr/share/nginx/html:ro

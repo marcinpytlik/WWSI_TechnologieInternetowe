@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Course Manager</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Course Manager</h1>
+
+    <section class="card">
+      <h2>Logowanie</h2>
+      <form id="login-form">
+        <input id="username" placeholder="Użytkownik" required>
+        <input id="password" type="password" placeholder="Hasło" required>
+        <button type="submit">Zaloguj</button>
+      </form>
+      <p id="auth-status">Niezalogowany</p>
+    </section>
+
+    <section class="card">
+      <h2>Tematy</h2>
+      <form id="topic-form">
+        <input id="topic-id" type="hidden">
+        <input id="name" placeholder="Nazwa" required>
+        <input id="description" placeholder="Opis">
+        <button type="submit">Zapisz</button>
+      </form>
+      <p id="status"></p>
+      <ul id="topics"></ul>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
