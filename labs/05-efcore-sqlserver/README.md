@@ -45,12 +45,19 @@ labs/05-efcore-sqlserver/
 ├── README.md
 ├── docker-compose.yml
 ├── Dockerfile
+├── .dockerignore
+├── .env.example
+├── .gitignore
 ├── requests/
 │   └── efcore.http
 └── src/
     └── CourseApi/
         ├── CourseApi.csproj
         ├── Program.cs
+        ├── Migrations/
+        │   ├── 20261002110000_InitialCreate.cs
+        │   ├── 20261002110000_InitialCreate.Designer.cs
+        │   └── CourseDbContextModelSnapshot.cs
         ├── Data/
         │   ├── CourseDbContext.cs
         │   └── DbSeeder.cs
@@ -72,6 +79,14 @@ Przejdź do:
 ```powershell
 cd labs/05-efcore-sqlserver
 ```
+
+Skopiuj lokalną konfigurację hasła (plik `.env` jest ignorowany przez Git):
+
+```powershell
+Copy-Item .env.example .env
+```
+
+Zmień wartość `MSSQL_SA_PASSWORD` w `.env` na własne silne hasło (nie publikuj go w repozytorium). Wymagany jest Docker Desktop uruchamiający kontenery Linux. SQL Server jest wystawiony na porcie hosta `14335`, a API na `8080`.
 
 Uruchom:
 
