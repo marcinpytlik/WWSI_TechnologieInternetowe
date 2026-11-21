@@ -1,0 +1,28 @@
+@baseUrl = http://localhost:8080
+
+### List topics
+GET {{baseUrl}}/api/topics
+
+### Search and pagination
+GET {{baseUrl}}/api/topics?search=HTTP&sort=name&page=1&pageSize=5
+
+### Get one topic
+GET {{baseUrl}}/api/topics/1
+
+### Create
+POST {{baseUrl}}/api/topics
+Content-Type: application/json
+
+{"name":"Entity Framework Core"}
+
+### Update
+PUT {{baseUrl}}/api/topics/1
+Content-Type: application/json
+
+{"name":"Entity Framework Core 10"}
+
+### Delete
+DELETE {{baseUrl}}/api/topics/1
+
+### Health
+GET {{baseUrl}}/health
